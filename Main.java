@@ -2,32 +2,34 @@ public class Main {
   public static void main(String[] args) {
     String text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     
-    String bestCase = "";
-
-    // * Initialize startTime here
+	  String bestCase = "A";
+    long startTime = System.nanoTime();
     int index = match(text, bestCase);
-    // * Initialize endTime here
-    // * Calculate elapsedTime here
+    long endTime = System.nanoTime();
+    long elapsedTime = endTime - startTime;
     
     if (index >= 0)
       System.out.println("best-case input matched at index " + index);
     else
       System.out.println("best-case input unmatched");   
-
-    String worstCase = "";
     
-    // * Initialize startTime here
+    System.out.println("Best-case execution time: " + elapsedTime + " nanoseconds\n");
+    String worstCase = "9999";
+    startTime = System.nanoTime();
+    
     index = match(text, worstCase);
-    // * Initialize endTime here
-    // * Calculate elapsedTime here
+    endTime = System.nanoTime();
+    
+    elapsedTime = endTime - startTime;
     
     if (index >= 0)
       System.out.println("worst-case input matched at index " + index);
     else
       System.out.println("worst-case input unmatched");  
+    
+    System.out.println("Worst-case execution time: " + elapsedTime + " nanoseconds");
   }
 
-  // Return the index of the first match. -1 otherwise.
   public static int match(String text, String pattern) {
     for (int i = 0; i < text.length() - pattern.length() + 1; i++) {
       if (isMatched(i, text, pattern))
@@ -37,7 +39,6 @@ public class Main {
     return -1;
   }
 	
-  // Test if pattern matches text starting at index i
   private static boolean isMatched(int i, String text, 
       String pattern) {
     for (int k = 0; k < pattern.length(); k++) {
@@ -45,7 +46,6 @@ public class Main {
         return false;
       }
     }
-    
     return true;
   }
 }
